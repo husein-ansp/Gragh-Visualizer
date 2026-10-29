@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 # Graph Visualizer
 
 An interactive graph visualization tool for testing graph algorithms.
@@ -61,7 +59,4 @@ The application validates graph parameters on the server
 and uses Django CSRF protection.
 
 Further security testing is required before public deployment.
-=======
-# dtdyt
-:)
->>>>>>> origin/main
+

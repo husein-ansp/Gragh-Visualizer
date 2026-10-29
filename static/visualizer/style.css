@@ -1,3 +1,4 @@
+/* فونت‌های اختصاصی پروژه */
 @font-face {
     font-family: "Onvan";
     src: url("./fonts/ONVAN.TTF") format("truetype");
@@ -14,11 +15,11 @@
     font-display: swap;
 }
 
+/* رنگ‌های اصلی رابط کاربری */
 :root {
     --blue: #2878f0;
     --blue-dark: #1554b5;
     --yellow: #ffd447;
-    --purple: #9067f8;
     --ink: #20304d;
     --muted: #71809b;
     --border: #e1eafb;
@@ -26,71 +27,63 @@
     --page: #f4f8ff;
 }
 
+/* محاسبه اندازه عناصر همراه با padding و border */
 * {
     box-sizing: border-box;
 }
 
+/* پس‌زمینه و فونت عمومی صفحه */
 body {
     margin: 0;
+    min-height: 100vh;
     background:
         radial-gradient(ellipse at 5% 10%, #e3f0ff 0, transparent 32%),
         var(--page);
     color: var(--ink);
     font-family: "Onvan Soft", "Onvan", sans-serif;
-    min-height: 100vh;
 }
 
+/* نوار بالای صفحه */
 .topbar {
     color: white;
     background: linear-gradient(115deg, #2677f5, #60b5fa);
     box-shadow: 0 5px 20px #2878f020;
 }
 
-.brand {
-    display: flex;
+/* نام و نشان برند */
+.topbar .brand {
+    display: inline-flex;
+    flex-direction: row;
     align-items: center;
     gap: 12px;
+    direction: ltr;
     color: white;
 }
 
-.brand-icon {
-    display: grid;
-    place-items: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 15px;
-    color: #183c86;
-    background: var(--yellow);
-    font-size: 29px;
-}
-
-.brand-name {
-    display: block;
-    font: 800 24px "Inter", sans-serif;
-    letter-spacing: -1px;
-}
-
-.brand-name b {
-    color: #ffe36a;
-}
-
-.brand small {
-    display: block;
-    margin-top: 5px;
-    font: 600 10px "Inter", sans-serif;
-    letter-spacing: 2px;
-    opacity: .9;
-}
-
-.ai-tag {
-    padding: 10px 15px;
-    border: 1px solid #ffffff66;
-    border-radius: 30px;
-    background: #ffffff1b;
-    font-size: 12px;
+.topbar .brand-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--blue);
+    color: #ffffff;
+    font-family: "Onvan Soft", "Onvan", sans-serif;
+    font-size: 26px;
     font-weight: 700;
+    line-height: 1;
+}
+.topbar .brand-name {
+    color: white;
+    font-family: "Onvan Soft", "Onvan", sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    direction: ltr;
 }
 
+/* ظاهر مشترک پنل‌ها */
 .panel {
     overflow: hidden;
     background: var(--surface);
@@ -99,6 +92,7 @@ body {
     box-shadow: 0 7px 25px #2b5b9d0a;
 }
 
+/* عنوان پنل‌ها */
 .panel-heading {
     padding: 16px;
     background: linear-gradient(110deg, #f0f6ff, #fff);
@@ -106,65 +100,67 @@ body {
     font-weight: 800;
 }
 
+/* محتوای داخلی پنل‌ها */
 .panel-body {
     padding: 18px;
 }
 
+/* برچسب فیلدهای فرم */
 .form-label {
     font-size: 13px;
     font-weight: 700;
 }
 
+/* ورودی‌های تعداد رأس و یال */
 .form-control {
     min-height: 44px;
     border-color: #dce7fa;
     border-radius: 10px;
     font-family: "Onvan Soft", "Onvan", sans-serif;
 }
-
 .form-control:focus {
     border-color: var(--blue);
     box-shadow: 0 0 0 3px #2878f01a;
 }
 
+/* دکمه‌های اصلی فرم */
 .btn {
     min-height: 43px;
     border-radius: 10px;
     font-size: 13px;
     font-weight: 700;
 }
-
 .btn-primary {
     background: var(--blue);
     border-color: var(--blue);
 }
-
 .btn-primary:hover {
     background: var(--blue-dark);
 }
-
 .btn-warning {
     background: var(--yellow);
     border-color: var(--yellow);
     color: #493a08;
 }
 
+/* توضیح محدودیت تعداد یال‌ها */
 .helper-text {
     color: var(--muted);
     font-size: 11px;
 }
 
+/* بخش ابزارهای سریع */
 .quick-actions {
     padding-top: 16px;
     border-top: 1px solid var(--border);
 }
-
 .quick-actions h6 {
     margin-bottom: 12px;
     font-weight: 800;
     font-size: 13px;
 }
 
+/* دکمه‌های زوم و تنظیم نما */
 .tool-btn {
     width: 100%;
     margin-bottom: 8px;
@@ -178,11 +174,11 @@ body {
     font-size: 12px;
     cursor: pointer;
 }
-
 .tool-btn:hover {
     background: #eaf2ff;
 }
 
+/* پیام وضعیت و حالت خطا */
 .status {
     min-height: 38px;
     padding: 10px;
@@ -192,16 +188,15 @@ body {
     font-size: 11px;
     overflow-wrap: anywhere;
 }
-
 .status.error {
     background: #fff0f0;
     color: #b42336;
 }
 
+/* پنل و عنوان بوم گراف */
 .graph-panel {
     min-height: 650px;
 }
-
 .graph-heading {
     display: flex;
     align-items: center;
@@ -209,12 +204,14 @@ body {
     font-family: "Onvan Soft", "Onvan", sans-serif;
 }
 
+/* راهنمای کوتاه کنار عنوان بوم */
 .drag-hint {
     margin-inline-start: auto;
     color: var(--muted);
     font: 500 11px "Onvan Soft", "Onvan", sans-serif;
 }
 
+/* محدوده نمایش گراف و پس‌زمینه نقطه‌ای */
 #canvas-wrap {
     height: 590px;
     min-height: 360px;
@@ -224,6 +221,7 @@ body {
     overflow: hidden;
 }
 
+/* SVG کل بوم را پر می‌کند و تعامل لمسی را به JS می‌سپارد */
 #graph {
     display: block;
     width: 100%;
@@ -232,31 +230,33 @@ body {
     user-select: none;
 }
 
+/* ظاهر یال‌های گراف */
 .edge {
     stroke: #8294b3;
     stroke-width: 2.2;
     stroke-linecap: round;
 }
 
+/* ظاهر و نشانگر رأس‌ها */
 .node {
     cursor: grab;
     outline: none;
 }
-
 .node:active {
     cursor: grabbing;
 }
 
+/* حلقه رأس و بازخورد هنگام انتخاب یا قرارگیری نشانگر */
 .node circle {
     stroke-width: 3;
-    transition: stroke-width .12s;
+    transition: stroke-width 0.12s;
 }
-
 .node:hover circle,
 .node:focus circle {
     stroke-width: 5;
 }
 
+/* شماره داخل هر رأس */
 .node text {
     fill: #24334d;
     font: 700 15px "Onvan Soft", "Onvan", sans-serif;
@@ -265,6 +265,7 @@ body {
     pointer-events: none;
 }
 
+/* نوار پایین بوم و نمایش میزان زوم */
 .canvas-footer {
     display: flex;
     justify-content: space-between;
@@ -275,6 +276,7 @@ body {
     font-size: 11px;
 }
 
+/* ردیف‌های آمار رأس و یال */
 .stat-row {
     display: flex;
     align-items: center;
@@ -283,25 +285,24 @@ body {
     border-bottom: 1px solid #edf1f8;
     font-size: 13px;
 }
-
 .stat-row:last-child {
     border-bottom: 0;
 }
-
 .stat-row strong {
     color: var(--blue-dark);
     font: 800 20px "Inter", sans-serif;
 }
 
+/* متن راهنمای سمت راست صفحه */
 .help-text {
     font-size: 12px;
     line-height: 1.9;
 }
-
 .help-text p:last-child {
     margin-bottom: 0;
 }
 
+/* پابرگ صفحه */
 .footer {
     margin-top: 16px;
     padding: 22px;
@@ -312,28 +313,23 @@ body {
     font-size: 12px;
 }
 
-.footer span {
-    color: #f0b800;
-}
-
+/* تنظیم اندازه‌ها برای نمایشگرهای کوچک */
 @media (max-width: 767px) {
-    .brand-name {
+    .topbar .brand-name {
         font-size: 19px;
     }
-
     .graph-panel {
         min-height: auto;
     }
-
     #canvas-wrap {
         height: 440px;
     }
-
     .drag-hint {
         font-size: 10px;
     }
 }
 
+/* کاهش حرکت‌های انیمیشنی در صورت درخواست کاربر */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -341,38 +337,4 @@ body {
         scroll-behavior: auto !important;
         transition-duration: 0.01ms !important;
     }
-}
-
-
-/* Resilio brand */
-.topbar .brand {
-    display: inline-flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 12px;
-    direction: ltr;
-}
-
-.topbar .brand-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    flex-shrink: 0;
-    border-radius: 10px;
-    background: var(--blue);
-    color: #ffffff;
-    font-family: "Onvan Soft", "Onvan", sans-serif;
-    font-size: 26px;
-    font-weight: 700;
-    line-height: 1;
-}
-
-.topbar .brand-name {
-    color: var(--ink);
-    font-family: "Onvan Soft", "Onvan", sans-serif;
-    font-size: 25px;
-    font-weight: 700;
-    direction: ltr;
 }
