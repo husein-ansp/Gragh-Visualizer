@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # Graph Visualizer
 
@@ -60,3 +61,7 @@ The application validates graph parameters on the server
 and uses Django CSRF protection.
 
 Further security testing is required before public deployment.
+=======
+# dtdyt
+:)
+>>>>>>> origin/main
