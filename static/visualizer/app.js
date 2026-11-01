@@ -141,7 +141,7 @@ function drawGraph() {
             class: "node",
             tabindex: "0",
             role: "button",
-            "aria-label": `رأس ${index}`,
+            "aria-label": `رأس ${index + 1}`,
             "data-id": index,
             transform: `translate(${node.x} ${node.y})`
         });
@@ -154,7 +154,7 @@ function drawGraph() {
             x: 0,
             y: 1
         });
-        label.textContent = String(index);
+        label.textContent = String(index + 1);
         group.append(circle, label);
         nodeFragment.appendChild(group);
 
@@ -190,21 +190,34 @@ function updateConnectedEdges(nodeId) {
 /* محاسبه حداکثر تعداد یال مجاز برای یک گراف ساده */
 function updateEdgeLimit() {
     const n = Number(nodesInput.value);
-    if (!Number.isInteger(n) || n < 1 || n > MAX_NODES) {
+
+    if (!Number.isInteger(n) || n < 2 || n > MAX_NODES) {
         edgeLimit.textContent =
-            `تعداد رأس باید بین 1 و ${MAX_NODES} باشد.`;
+            `تعداد رأس باید بین 2 و ${MAX_NODES} باشد.`;
+
+        edgesInput.min = "0";
         edgesInput.max = "0";
         return;
     }
 
-    // در گراف ساده بدون جهت، هر جفت رأس حداکثر یک یال دارد
+    // حداکثر تعداد یال در گراف ساده
     const max = n * (n - 1) / 2;
-    edgesInput.max = String(max);
-    edgeLimit.textContent =
-        `حداکثر یال برای این تعداد راس: ${max}`;
 
-    // اگر تعداد یال بیشتر از حد مجاز شد، مقدار را اصلاح کن
-    if (Number(edgesInput.value) > max) {
+    // حداقل یال برای جلوگیری از رأس بدون یال
+    const min = Math.ceil(n / 2);
+
+    edgesInput.min = String(min);
+    edgesInput.max = String(max);
+
+    edgeLimit.textContent =
+        `حداقل یال: ${min} | حداکثر یال: ${max}`;
+
+    // اصلاح مقدار یال در صورت خارج بودن از محدوده
+    const currentEdges = Number(edgesInput.value);
+
+    if (!Number.isInteger(currentEdges) || currentEdges < min) {
+        edgesInput.value = String(min);
+    } else if (currentEdges > max) {
         edgesInput.value = String(max);
     }
 }
@@ -228,9 +241,9 @@ form.addEventListener("submit", async (event) => {
     if (
         !Number.isInteger(n) ||
         !Number.isInteger(m) ||
-        n < 1 ||
+        n < 2 ||
         n > MAX_NODES ||
-        m < 0 ||
+        m < Math.ceil(n / 2) ||
         m > maxEdges
     ) {
         setStatus("تعداد رأس یا یال معتبر نیست.", true);
